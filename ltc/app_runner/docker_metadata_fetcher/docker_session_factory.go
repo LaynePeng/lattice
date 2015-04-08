@@ -31,6 +31,7 @@ func (factory *dockerSessionFactory) MakeSession(reposName string) (DockerSessio
 		return nil, fmt.Errorf("Error resolving Docker repository name:\n" + err.Error())
 	}
 
+	repositoryInfo.Index.Secure = false
 	endpoint, err := registry.NewEndpoint(repositoryInfo.Index)
 	if err != nil {
 		return nil, fmt.Errorf("Error Connecting to Docker registry:\n" + err.Error())
